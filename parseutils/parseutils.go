@@ -730,6 +730,7 @@ type DeviceState struct {
 
 	// Instanteous state
 	Temperature   tsInt
+	Temperaturepcb   tsInt
 	Voltage       tsInt
 	BatteryLevel  tsInt
 	Brightness    tsInt
@@ -1741,6 +1742,10 @@ func updateState(b io.Writer, csvState *csv.State, state *DeviceState, summary *
 	case "Bt": // temperature
 		return state, summary, state.Temperature.assign(state.CurrentTime, value, summary.Active, "Temperature", csvState)
 
+        case "PCB": // temperaturepcb
+		//value = "225"
+		return state, summary, state.Temperaturepcb.assign(state.CurrentTime, value, summary.Active, "Temperaturepcb", csvState)
+
 	case "Bv": // volt
 		return state, summary, state.Voltage.assign(state.CurrentTime, value, summary.Active, "Voltage", csvState)
 
@@ -2725,7 +2730,7 @@ func updateState(b io.Writer, csvState *csv.State, state *DeviceState, summary *
 			}
 			state.dpstTokenIndex++
 		} else {
-			fmt.Printf("Unknown history key: %s%s / %s\n", tr, key, value)
+			//fmt.Printf("Unknown history key: %s%s / %s\n", tr, key, value)
 			return state, summary, errors.New("unknown key " + key)
 		}
 	}

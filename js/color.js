@@ -277,6 +277,10 @@ historian.color.colorMap_[historian.metrics.Csv.TEMPERATURE] = d3.scaleLinear()
     .domain([0, 20, 30, 45, 100])
     .range(['white', '#ffebcd', '#e2a76f', 'red', 'black']);
 
+historian.color.colorMap_[historian.metrics.Csv.TEMPERATUREPCB] = d3.scaleLinear()
+    .domain([0, 200, 300, 400, 500])
+    .range(['white', '#ffebcd', '#e2a76f', 'red', 'black']);
+
 
 /** @private {function(string): string} */
 historian.color.colorMap_[
@@ -431,6 +435,16 @@ historian.color.valueFormatter = function(metric, v, opt_shortForm) {
           goog.string.htmlEscape(v.toFixed(1)),
           goog.string.htmlEscape(fahrenheit.toFixed(1)));
       return {value: text, classes: 'temperature'};
+    case historian.metrics.Csv.TEMPERATUREPCB:
+      //console.log("--------------------");
+      //console.log(v);
+      v = v / 10;
+      var fahrenheit = v * 9 / 5 + 32;
+      //console.log(fahrenheit);
+      var text = goog.string.subs('%s °C (%s °F)',
+          goog.string.htmlEscape(v.toFixed(1)),
+          goog.string.htmlEscape(fahrenheit.toFixed(1)));
+      return {value: text};
     case historian.metrics.Csv.COULOMB_CHARGE:
       // Units are in mAh.
       return {value: goog.string.subs('%s mAh', v)};

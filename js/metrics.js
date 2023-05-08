@@ -97,6 +97,7 @@ historian.metrics.Csv = {
   POWER_MONITOR_MA_MW_GROUP: 'Power Monitor mA / mW [group]',
   POWER_MONITOR_MA_MAH_GROUP: 'Power Monitor mA / cumulative mAh [group]',
   TEMPERATURE: 'Temperature',
+  TEMPERATUREPCB: 'Temperaturepcb',
   VOLTAGE: 'Voltage',
 
   // String metrics
@@ -704,6 +705,7 @@ historian.metrics.BATTERY_HISTORY_ORDER = [].concat(
           historian.metrics.Csv.BATTERY_LEVEL,
           historian.metrics.Csv.COULOMB_CHARGE,
           historian.metrics.Csv.TEMPERATURE,
+          historian.metrics.Csv.TEMPERATUREPCB,
           historian.metrics.Csv.PLUGGED,
           historian.metrics.Csv.CHARGING_ON
         ]

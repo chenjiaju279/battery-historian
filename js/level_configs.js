@@ -114,6 +114,10 @@ historian.LevelConfigs = function(capacity, nameToLevelGroup,
       configFunc: historian.LevelConfigs.temperatureConfig_
     },
     {
+      group: historian.metrics.Csv.TEMPERATUREPCB,
+      configFunc: historian.LevelConfigs.temperatureConfigpcb_
+    },
+    {
       group: historian.metrics.Csv.WIFI_SUPPLICANT,
       configFunc: historian.LevelConfigs.wifiSupplicantConfig_
     }
@@ -476,6 +480,29 @@ historian.LevelConfigs.temperatureConfig_ = function(data) {
   };
 };
 
+
+historian.LevelConfigs.temperatureConfigpcb_ = function(data) {
+  var extent = d3.extent(data, function(d) {
+    return d.value;
+  });
+  return {
+    displayPowerInfo: false,
+    enableSampling: false,
+    formatDischarge: null,
+    formatLevel: null,
+    showExtraSummary: false,
+    id: 'temperaturepcb',
+    name: historian.metrics.Csv.TEMPERATUREPCB,
+    legendText: 'Temperaturepcb (°C)',
+    levelDisplayText: 'Temperaturepcb',
+    yDomain: {
+      min: extent[0],
+      max: extent[1],
+    },
+    isRateOfChange: false,
+    opacity: 1
+  };
+};
 
 /**
  * The configuration for displaying brightness data.
