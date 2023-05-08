@@ -66,12 +66,27 @@ Next, download the Battery Historian code and its dependencies:
 $ go get -d -u github.com/google/battery-historian/...
 ```
 
-Finally, run Battery Historian!
+cd ~/work/src/github.com/google/battery-historian/
 
-```
-$ cd $GOPATH/src/github.com/google/battery-historian
+mkdir third_party
 
-# Compile Javascript files using the Closure compiler
+cd third_party
+
+git clone https://github.com/google/closure-compiler
+
+git clone https://github.com/google/closure-library --branch v20170409
+
+git clone https://github.com/markrcote/flot-axislabels
+
+git clone https://github.com/gusha915/no-ssr-battery-historian.git
+
+cp -r no-ssr-battery-historian/cdn .
+
+cp no-ssr-battery-historian/base.html ../templates/
+
+cd ..
+
+
 $ go run setup.go
 
 # Run Historian on your machine (make sure $PATH contains $GOBIN)
