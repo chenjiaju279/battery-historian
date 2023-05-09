@@ -64,7 +64,6 @@ cd ..
 
 $ go run setup.go
 
-# Run Historian on your machine (make sure $PATH contains $GOBIN)
 $ go run cmd/battery-historian/battery-historian.go [--port <default:9999>]
 ```
 
