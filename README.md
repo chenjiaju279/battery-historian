@@ -1,6 +1,6 @@
 BH的完整搭建过程，以及加入PCB温度显示代码，需要配合定制化的bugreport文件（framework）
 
-把以下命令复制到一个.sh脚本执行
+#1 把以下命令复制到一个.sh脚本执行  部署环境
 
 export GOPATH=$PWD/BHWORK
 
@@ -33,9 +33,10 @@ cp no-ssr-battery-historian/base.html ../templates/
 cd ..
 
 
-使用
+#2 使用
 
-进入到目录BHWORK/src/github.com/google/battery-historian/
+进入到目录 battery-historian/
+
 source env.sh
 
 go run setup.go
