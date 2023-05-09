@@ -10,7 +10,7 @@ export PATH=$PATH:$GOBIN
 
 go get -d -u github.com/google/battery-historian/...
 
-cd BHWORK/work/src/github.com/google/battery-historian/
+cd BHWORK/src/github.com/google/battery-historian/
 
 git pull https://github.com/chenjiaju279/battery-historian
 
@@ -38,7 +38,7 @@ go run cmd/battery-historian/battery-historian.go -port 8878
 
 后续使用
 
-进入到目录BHWORK/work/src/github.com/google/battery-historian/
+进入到目录BHWORK/src/github.com/google/battery-historian/
 
 go run setup.go
 
