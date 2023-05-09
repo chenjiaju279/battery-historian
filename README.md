@@ -41,6 +41,8 @@ $ go get -d -u github.com/google/battery-historian/...
 
 cd ~/work/src/github.com/google/battery-historian/
 
+git pull https://github.com/chenjiaju279/battery-historian
+
 mkdir third_party
 
 cd third_party
