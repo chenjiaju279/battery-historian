@@ -10,11 +10,11 @@ echo 'export PATH=$PATH:$GOBIN' >> ~/.bashrc
 
 cd ~
 
-./.bashrc
+source .bashrc
 
 go get -d -u github.com/google/battery-historian/...
 
-cd BHWORK/src/github.com/google/battery-historian/
+cd $GOPATH/src/github.com/google/battery-historian/
 
 git pull https://github.com/chenjiaju279/battery-historian
 
