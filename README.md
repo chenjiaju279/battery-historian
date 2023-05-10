@@ -2,11 +2,15 @@ BH的完整搭建过程，以及加入PCB温度显示代码，需要配合定制
 
 #1 把以下命令复制到一个.sh脚本执行  部署环境
 
-export GOPATH=$PWD/BHWORK
+echo 'export GOPATH=~/work' >> ~/.bashrc
 
-export GOBIN=$GOPATH/bin
+echo 'export GOBIN=$GOPATH/bin' >> ~/.bashrc
 
-export PATH=$PATH:$GOBIN
+echo 'export PATH=$PATH:$GOBIN' >> ~/.bashrc
+
+cd ~
+
+./.bashrc
 
 go get -d -u github.com/google/battery-historian/...
 
