@@ -1748,7 +1748,7 @@ func updateState(b io.Writer, csvState *csv.State, state *DeviceState, summary *
 		return state, summary, state.Temperaturepcb.assign(state.CurrentTime, value, summary.Active, "Temperaturepcb", csvState)
 
         case "cui":// Currenti
-               fmt.Print(value)
+               //fmt.Print(value)
                return state, summary, state.Currenti.assign(state.CurrentTime, value, summary.Active, "Currenti", csvState)
         
 	case "Bv": // volt
