@@ -1,4 +1,4 @@
-BH的完整搭建过程，加入PCB温度显示，导入Power monitor数据，需要配合定制化的bugreport文件
+BH的完整搭建过程，1加入PCB温度显示（需要配合定制化的bugreport文件），2导入Power monitor数据
 
 #1 把以下命令复制到一个.sh脚本执行  部署环境
 
