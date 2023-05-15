@@ -118,6 +118,10 @@ historian.LevelConfigs = function(capacity, nameToLevelGroup,
       configFunc: historian.LevelConfigs.temperatureConfigpcb_
     },
     {
+      group: historian.metrics.Csv.CURRENTI,
+      configFunc: historian.LevelConfigs.currenti_
+    },
+    {
       group: historian.metrics.Csv.WIFI_SUPPLICANT,
       configFunc: historian.LevelConfigs.wifiSupplicantConfig_
     }
@@ -493,8 +497,31 @@ historian.LevelConfigs.temperatureConfigpcb_ = function(data) {
     showExtraSummary: false,
     id: 'temperaturepcb',
     name: historian.metrics.Csv.TEMPERATUREPCB,
-    legendText: 'Temperaturepcb (°C)',
+    legendText: 'Temperaturepcb ( 0.1  °C)',
     levelDisplayText: 'Temperaturepcb',
+    yDomain: {
+      min: extent[0],
+      max: extent[1],
+    },
+    isRateOfChange: false,
+    opacity: 1
+  };
+};
+
+historian.LevelConfigs.currenti_ = function(data) {
+  var extent = d3.extent(data, function(d) {
+    return d.value;
+  });
+  return {
+    displayPowerInfo: false,
+    enableSampling: false,
+    formatDischarge: null,
+    formatLevel: null,
+    showExtraSummary: false,
+    id: 'Currenti',
+    name: historian.metrics.Csv.CURRENTI,
+    legendText: 'Current( 0.01  ma )',
+    levelDisplayText: 'Curreni',
     yDomain: {
       min: extent[0],
       max: extent[1],

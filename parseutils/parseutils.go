@@ -731,6 +731,7 @@ type DeviceState struct {
 	// Instanteous state
 	Temperature   tsInt
 	Temperaturepcb   tsInt
+	Currenti      tsInt
 	Voltage       tsInt
 	BatteryLevel  tsInt
 	Brightness    tsInt
@@ -1746,6 +1747,10 @@ func updateState(b io.Writer, csvState *csv.State, state *DeviceState, summary *
 		//value = "225"
 		return state, summary, state.Temperaturepcb.assign(state.CurrentTime, value, summary.Active, "Temperaturepcb", csvState)
 
+        case "cui":// Currenti
+               fmt.Print(value)
+               return state, summary, state.Currenti.assign(state.CurrentTime, value, summary.Active, "Currenti", csvState)
+        
 	case "Bv": // volt
 		return state, summary, state.Voltage.assign(state.CurrentTime, value, summary.Active, "Voltage", csvState)
 

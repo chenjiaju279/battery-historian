@@ -98,6 +98,7 @@ historian.metrics.Csv = {
   POWER_MONITOR_MA_MAH_GROUP: 'Power Monitor mA / cumulative mAh [group]',
   TEMPERATURE: 'Temperature',
   TEMPERATUREPCB: 'Temperaturepcb',
+  CURRENTI: 'Currenti',
   VOLTAGE: 'Voltage',
 
   // String metrics

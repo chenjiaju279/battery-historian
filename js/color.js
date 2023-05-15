@@ -448,6 +448,8 @@ historian.color.valueFormatter = function(metric, v, opt_shortForm) {
     case historian.metrics.Csv.COULOMB_CHARGE:
       // Units are in mAh.
       return {value: goog.string.subs('%s mAh', v)};
+    case historian.metrics.Csv.CURRENTI:
+      return {value: goog.string.subs('%s mA', v/100)};
     case historian.metrics.Csv.ACTIVE_BROADCAST_BACKGROUND:
     case historian.metrics.Csv.ACTIVE_BROADCAST_FOREGROUND:
     case historian.metrics.Csv.BROADCAST_ENQUEUE_BACKGROUND:
