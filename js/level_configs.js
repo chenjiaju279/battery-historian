@@ -497,7 +497,7 @@ historian.LevelConfigs.temperatureConfigpcb_ = function(data) {
     showExtraSummary: false,
     id: 'temperaturepcb',
     name: historian.metrics.Csv.TEMPERATUREPCB,
-    legendText: 'Temperaturepcb ( 0.1  °C)',
+    legendText: 'Temperaturepcb ( °C)',
     levelDisplayText: 'Temperaturepcb',
     yDomain: {
       min: extent[0],
@@ -520,7 +520,7 @@ historian.LevelConfigs.currenti_ = function(data) {
     showExtraSummary: false,
     id: 'Currenti',
     name: historian.metrics.Csv.CURRENTI,
-    legendText: 'Current( 0.01  ma )',
+    legendText: 'Currenti ( ma )',
     levelDisplayText: 'Curreni',
     yDomain: {
       min: extent[0],

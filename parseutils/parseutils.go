@@ -486,6 +486,7 @@ func (s *ServiceUID) GetKey(desc string) csv.Key {
 
 // tsInt contains an integer state with initial timestamp in ms.
 type tsInt struct {
+        Name string
 	Start int64
 	Value int
 }
@@ -495,6 +496,7 @@ func (s *tsInt) assign(curTime int64, value string, summaryActive bool, desc str
 	if err != nil {
 		return fmt.Errorf("parsing int error for %q", desc)
 	}
+	s.Name = desc
 	csv.AddEntry(desc, s, curTime)
 	s.Value = parsedInt
 	s.Start = curTime
@@ -515,11 +517,23 @@ func (s *tsInt) GetStartTime() int64 {
 
 // GetType returns the type of the entry.
 func (s *tsInt) GetType() string {
+        if s.Name == "Currenti" {return "float"}
+        if s.Name == "Temperaturepcb" {return "float"}
 	return "int"
 }
 
 // GetValue returns the stored service for the entry.
 func (s *tsInt) GetValue() string {
+        if s.Name == "Currenti" {
+	  var vt = float64(s.Value)
+	  vt = vt /100
+	  return strconv.FormatFloat(vt,'f',2,64)
+	}
+	if s.Name == "Temperaturepcb" {
+	  var vt = float64(s.Value)
+	  vt = vt /10
+	  return strconv.FormatFloat(vt,'f',1,64)
+	}
 	return strconv.Itoa(s.Value)
 }
 
@@ -1748,7 +1762,6 @@ func updateState(b io.Writer, csvState *csv.State, state *DeviceState, summary *
 		return state, summary, state.Temperaturepcb.assign(state.CurrentTime, value, summary.Active, "Temperaturepcb", csvState)
 
         case "cui":// Currenti
-               //fmt.Print(value)
                return state, summary, state.Currenti.assign(state.CurrentTime, value, summary.Active, "Currenti", csvState)
         
 	case "Bv": // volt
