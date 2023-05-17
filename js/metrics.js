@@ -99,6 +99,7 @@ historian.metrics.Csv = {
   TEMPERATURE: 'Temperature',
   TEMPERATUREPCB: 'Temperaturepcb',
   CURRENTI: 'Currenti',
+  SYSCURRENT: 'SysCurrent',
   VOLTAGE: 'Voltage',
 
   // String metrics

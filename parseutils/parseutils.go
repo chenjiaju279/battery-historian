@@ -519,6 +519,7 @@ func (s *tsInt) GetStartTime() int64 {
 func (s *tsInt) GetType() string {
         if s.Name == "Currenti" {return "float"}
         if s.Name == "Temperaturepcb" {return "float"}
+        if s.Name == "SysCurrent" {return "float"}
 	return "int"
 }
 
@@ -532,6 +533,11 @@ func (s *tsInt) GetValue() string {
 	if s.Name == "Temperaturepcb" {
 	  var vt = float64(s.Value)
 	  vt = vt /10
+	  return strconv.FormatFloat(vt,'f',1,64)
+	}
+	if s.Name == "SysCurrent" {
+	  var vt = float64(s.Value)
+	  vt = vt /1000
 	  return strconv.FormatFloat(vt,'f',1,64)
 	}
 	return strconv.Itoa(s.Value)
@@ -746,6 +752,7 @@ type DeviceState struct {
 	Temperature   tsInt
 	Temperaturepcb   tsInt
 	Currenti      tsInt
+	SysCurrent      tsInt
 	Voltage       tsInt
 	BatteryLevel  tsInt
 	Brightness    tsInt
@@ -1763,6 +1770,15 @@ func updateState(b io.Writer, csvState *csv.State, state *DeviceState, summary *
 
         case "cui":// Currenti
                return state, summary, state.Currenti.assign(state.CurrentTime, value, summary.Active, "Currenti", csvState)
+        
+        case "syscui":
+               flag := strings.Contains(value, "-")
+               if flag == true {
+                 value = strings.Replace(value, "-", "", 1)
+               }else {
+                 value = "0"
+               }
+               return state, summary, state.SysCurrent.assign(state.CurrentTime, value, summary.Active, "SysCurrent", csvState)
         
 	case "Bv": // volt
 		return state, summary, state.Voltage.assign(state.CurrentTime, value, summary.Active, "Voltage", csvState)

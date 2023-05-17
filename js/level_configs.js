@@ -122,6 +122,10 @@ historian.LevelConfigs = function(capacity, nameToLevelGroup,
       configFunc: historian.LevelConfigs.currenti_
     },
     {
+      group: historian.metrics.Csv.SYSCURRENT,
+      configFunc: historian.LevelConfigs.syscurrent_
+    },
+    {
       group: historian.metrics.Csv.WIFI_SUPPLICANT,
       configFunc: historian.LevelConfigs.wifiSupplicantConfig_
     }
@@ -522,6 +526,29 @@ historian.LevelConfigs.currenti_ = function(data) {
     name: historian.metrics.Csv.CURRENTI,
     legendText: 'Currenti ( ma )',
     levelDisplayText: 'Curreni',
+    yDomain: {
+      min: extent[0],
+      max: extent[1],
+    },
+    isRateOfChange: false,
+    opacity: 1
+  };
+};
+
+historian.LevelConfigs.syscurrent_ = function(data) {
+  var extent = d3.extent(data, function(d) {
+    return d.value;
+  });
+  return {
+    displayPowerInfo: false,
+    enableSampling: false,
+    formatDischarge: null,
+    formatLevel: null,
+    showExtraSummary: false,
+    id: 'SysCurrent',
+    name: historian.metrics.Csv.SYSCURRENT,
+    legendText: 'SysCurrent ( ma )',
+    levelDisplayText: 'SysCurrent',
     yDomain: {
       min: extent[0],
       max: extent[1],

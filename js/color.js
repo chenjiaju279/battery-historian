@@ -446,6 +446,8 @@ historian.color.valueFormatter = function(metric, v, opt_shortForm) {
       return {value: goog.string.subs('%s mAh', v)};
     case historian.metrics.Csv.CURRENTI:
       return {value: goog.string.subs('%s mA', v)};
+    case historian.metrics.Csv.SYSCURRENT:
+      return {value: goog.string.subs('%s mA', v)};
     case historian.metrics.Csv.ACTIVE_BROADCAST_BACKGROUND:
     case historian.metrics.Csv.ACTIVE_BROADCAST_FOREGROUND:
     case historian.metrics.Csv.BROADCAST_ENQUEUE_BACKGROUND:
