@@ -8,7 +8,7 @@
 
 4 加入系统电流数据显示，方便分析问题（需要配合framework）
 
-#1 执行以下命令  部署环境
+#1 执行以下命令  搭建Battery Historian
 
 echo 'export GOPATH=~/work' >> ~/.bashrc
 
