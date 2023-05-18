@@ -1,4 +1,4 @@
-基于谷歌项目Battery Historian改造，改动主要有，
+基于谷歌项目Battery Historian改造，改动主要有
 
 1 总结BH的完整搭建过程
 
@@ -7,6 +7,8 @@
 3 修改原生 monsoon.py，可以导入Power monitor数据
 
 4 加入系统电流数据显示，方便分析问题（需要配合framework）
+
+显示图view.jpeg
 
 #1 执行以下命令  搭建Battery Historian
 
