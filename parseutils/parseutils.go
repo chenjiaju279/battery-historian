@@ -1776,7 +1776,7 @@ func updateState(b io.Writer, csvState *csv.State, state *DeviceState, summary *
                if flag == true {
                  value = strings.Replace(value, "-", "", 1)
                }else {
-                 value = "0"
+                 value = "-"+value
                }
                return state, summary, state.SysCurrent.assign(state.CurrentTime, value, summary.Active, "SysCurrent", csvState)
         
